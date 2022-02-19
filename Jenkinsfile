@@ -24,7 +24,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'sudo docker push farooq786/nodeapp:$BUILD_NUMBER .'
+                sh 'sudo docker push farooq786/nodeapp:$BUILD_NUMBER '
             }
         }
 }
