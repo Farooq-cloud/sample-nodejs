@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'sudo docker build -t Farooq/nodeapp:1 .'
+                sh 'sudo docker build -t farooq/nodeapp:1 .'
             }
         }
         
