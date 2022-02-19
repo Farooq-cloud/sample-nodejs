@@ -14,7 +14,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'sudo docker build -t farooq786/nodeapp:1 .'
+                sh 'sudo docker build -t farooq786/nodeapp:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'sudo docker push farooq786/nodeapp:1'
+                sh 'sudo docker push farooq786/nodeapp:$BUILD_NUMBER .'
             }
         }
 }
