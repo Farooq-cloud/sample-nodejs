@@ -27,6 +27,12 @@ pipeline {
                 sh 'sudo docker push farooq786/nodeapp:$BUILD_NUMBER '
             }
         }
+        stage('docker run') {
+            steps{
+                sh 'sudo docker rm -f con1'
+                sh 'sudo docker run -itd --name con1 -p 3000:3000 farooq786/nodeapp:$BUILD_NUMBER'
+            }
+        }
 }
 post {
         always {
