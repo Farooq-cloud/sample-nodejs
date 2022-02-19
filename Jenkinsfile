@@ -1,35 +1,22 @@
 pipeline {
-    agent any 
-    environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    agent {
+        label 'slave'
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/kaza514/sample-nodejs.git'
+            git 'https://github.com/Farooq-cloud/sample-nodejs.git'
             }
         }
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t kaza514/nodeapp:$BUILD_NUMBER .'
+                sh 'docker build -t Farooq/nodeapp:1 .'
             }
         }
-        stage('login to dockerhub') {
-            steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
-        }
-        stage('push image') {
-            steps{
-                sh 'docker push kaza514/nodeapp:$BUILD_NUMBER'
-            }
-        }
+        
+        
 }
-post {
-        always {
-            sh 'docker logout'
-        }
-    }
+
 }
 
